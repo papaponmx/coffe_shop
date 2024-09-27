@@ -22,8 +22,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("productos/", include("products.urls")),  # Note the 'productos/' prefix
-    # Add other app URLs as needed
+    path("productos/", include("products.urls")),
+    path("usuarios/", include("users.urls")),
 ]
 
 if settings.DEBUG:
