@@ -5,18 +5,22 @@
 
   <ul>
     {% for product in products %}
-      <a href="#" class="group block overflow-hidden">
-        <div class="relative h-[350px] sm:h-[450px]">
-          {% if product.photo %}
-            <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" />
-          {% endif %}
-        </div>
+      <div class="relative h-[350px] sm:h-[450px]">
+        {% if product.photo %}
+          <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" />
+        {% endif %}
+      </div>
 
-        <div class="relative bg-white pt-3">
-          <h3 class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4">{{ product.name }}</h3>
-          <p class="mt-1.5 tracking-wide text-gray-900">${{ product.price }}</p>
-        </div>
-      </a>
+      <div class="relative bg-white pt-3">
+        <h3 class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4">{{ product.name }}</h3>
+        <p class="mt-1.5 tracking-wide text-gray-900">${{ product.price }}</p>
+      </div>
+
+      <form method="post" action="{% url 'add_product' %}">
+        {% csrf_token %}
+        <input type="hidden" name="product" value="{{ product.id }}" />
+        <button>Agregar al pedido</button>
+      </form>
     {% endfor %}
   </ul>
 {% endblock %}
