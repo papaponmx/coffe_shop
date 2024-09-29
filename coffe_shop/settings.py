@@ -141,3 +141,4 @@ CRISPY_TEMPLATE_PACK = "tailwind"
 
 LOGIN_REDIRECT_URL = "product_list"
 LOGOUT_REDIRECT_URL = "list_product"
+LOGIN_URL = "login"
