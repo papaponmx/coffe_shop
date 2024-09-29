@@ -7,13 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <p>
+    <div>
       {% if user.is_authenticated %}
         Hola, {{ user.username }}
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Cerrar sesión</button>
+        </form>
       {% else %}
         <a href="{% url 'login' %}">Login</a>
       {% endif %}
-    </p>
+    </div>
 
     {% block content %}
 
